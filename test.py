@@ -5,14 +5,18 @@ import whisper
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 
-# Set language (korean)
+# Set language (korean)#
 language_whisper = "english"
 
 
 model_fp32 = whisper.load_model(
     name="small",
     device="cuda")
-result = model_fp32.transcribe("./files/radiolingala.mp3")
+
+result = model_fp32.transcribe("./files/audio.wav")
+print(result["text"])
+
+result = model_fp32.transcribe("./files/radioswahili.mp3")
 
 
 model = whisper.load_model("tiny")
