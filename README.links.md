@@ -1,5 +1,12 @@
 # interesting links
 
+    Top Congo FM
+    Radio Okapi
+    Radio Tv Mix Congolaise
+    Radio Light FM Kinshasa
+    R2CFM Radio Congo Culture
+    
+
 # container dev in wsl2
 
 https://madmenhitbooker.medium.com/machine-learning-container-with-gpu-inside-visual-studio-code-ubuntu-3233a2921462
