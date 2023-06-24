@@ -11,6 +11,21 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true
-        }
+        },
+        {
+            "name": "Python: Debug Gradio",
+            "type": "python",
+            "request": "launch",
+            "module": "gradio.server",
+            "args": [
+              "--app_file",
+              "transcribeRadio2.py"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+              "PYTHONUNBUFFERED": "1"
+            }
+          }
     ]
 }
