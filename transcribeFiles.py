@@ -13,6 +13,7 @@ model_fp32 = whisper.load_model(
     name="small",
     device="cuda")
 
+
 result = model_fp32.transcribe("./files/audio.wav")
 print(result["text"])
 
