@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Latest Transcription Results</title>
+    </head>
+    <body>
+        <h1>Latest Transcription Results</h1>
+        <h2>Transcript:</h2>
+        <p>{{ transcript }}</p>
+        <h2>Audio:</h2>
+        {% if audio_file %}
+        <audio controls>
+            <source src="{{ url_for('static', filename=audio_file) }}" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        {% else %}
+        <p>No audio available</p>
+        {% endif %}
+    </body>
+</html>
+
+       

@@ -35,7 +35,7 @@ audio_queue = queue.Queue()
 # Create placeholders for the audio player, log text area, and transcript text area
 log_text_area = gr.outputs.Textbox(label="Log")
 transcript_text_area = gr.outputs.Textbox(label="Transcript")
-audio_player = gr.outputs.Audio(label="Audio")
+audio_player = gr.outputs.Audio(type='filepath', label="Audio")
 
 
 # Function to transcribe audio files
