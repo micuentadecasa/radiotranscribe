@@ -27,16 +27,20 @@ latest_transcript = manager.Value('s', "")
 def transcribe_audio(audio_queue, results_queue, latest_transcript):
     # Set up the ASR model
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    logging.info("device: " + device  )
     model_fp32 = whisper.load_model(name="small", device=device)
 
     while True:
         try:
+            logging.info("Waiting for audio file")
             audio_file = audio_queue.get()
             results_queue.put("Transcription start")
+            logging.info("Transcribing audio file: ")
             result_dict = model_fp32.transcribe(audio_file)
             result = result_dict['text'] if 'text' in result_dict else "No transcription available"
             latest_transcript.value = result
             results_queue.put("Transcription complete: " + result)
+            logging.info("Transcription complete: " + result)
         except Exception as e:
             logging.error(f"Error in transcription: {e}")
             continue
@@ -71,8 +75,8 @@ def process_stream():
             if buffer.tell() >= 10 * 1024 * 100:
                 results_queue.put("Saving audio file")
                 now = datetime.datetime.now()
-                os.makedirs('static/audio', exist_ok=True)
-                filename = f'static/audio/stream_{now.strftime("%Y%m%d_%H%M%S")}.wav'
+                #os.makedirs('./templates/audio', exist_ok=True)
+                filename = f'./static/stream_{now.strftime("%Y%m%d_%H%M%S")}.wav'
 
                 with open(filename, 'wb') as f:
                     f.write(buffer.getvalue())

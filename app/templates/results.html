@@ -2,15 +2,25 @@
 <html>
     <head>
         <title>Latest Transcription Results</title>
+        <script>
+            // This function will run once the page is loaded
+            document.addEventListener("DOMContentLoaded", function(){
+                // Set a timeout to refresh the page every minute (60000 milliseconds)
+                setTimeout(function(){
+                    location.reload();
+                }, 60000);
+            });
+            </script>
     </head>
     <body>
         <h1>Latest Transcription Results</h1>
         <h2>Transcript:</h2>
         <p>{{ transcript }}</p>
+       
         <h2>Audio:</h2>
         {% if audio_file %}
         <audio controls>
-            <source src="{{ url_for('static', filename=audio_file) }}" type="audio/wav">
+            <source src="{{audio_file}}" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
         {% else %}

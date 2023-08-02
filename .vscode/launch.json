@@ -30,18 +30,18 @@
       "justMyCode": true
     },
     {
-      "name": "Python: Debug Gradio",
-      "type": "python",
+      "name": "Docker: Python - Flask",
+      "type": "docker",
       "request": "launch",
-      "module": "gradio.server",
-      "args": [
-        "--app_file",
-        "transcribeRadio2.py"
-      ],
-      "console": "integratedTerminal",
-      "cwd": "${workspaceFolder}",
-      "env": {
-        "PYTHONUNBUFFERED": "1"
+      "preLaunchTask": "docker-run: debug",
+      "python": {
+        "pathMappings": [
+          {
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/app"
+          }
+        ],
+        "projectType": "flask"
       }
     }
   ]
